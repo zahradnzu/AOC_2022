@@ -1,23 +1,39 @@
 def main():
-    elves_list = elves_list_maker("1st.txt")
-    elv_str = ""
-    for calorie in elves_list:
-        if calorie != "---":
-            elv_str = elv_str + calorie + ","
-        else:
-            elv_str = elv_str + calorie
-    print(elv_str)
+    elve_list = elves_list_maker("1st.txt")
+    new_elve_list = []
+    for elve in elve_list:
+        calorie_count = 0
+        for calorie in elve:
+            try:
+                calorie_count += int(calorie)
+            except (ValueError, TypeError):
+                new_elve_list.append(calorie_count)
+                break
+    print(max(new_elve_list))
 
 def elves_list_maker(file):
-    elves_list = []
+    raw_elves_list = []
     with open(file, "r") as txt_file:
         for row in txt_file:
             if row != "\n":
                 row = row.strip("\n")
-                elves_list.append(row)
+                raw_elves_list.append(row)
             else:
-                elves_list.append("---")
-    return elves_list
+                raw_elves_list.append("---")
+    converting_string = ""
+    
+    for calorie in raw_elves_list:
+        if calorie != "---":
+           converting_string = converting_string + calorie + ","
+        else:
+            converting_string = converting_string + calorie
+    list_from_string = converting_string.split("---")
+    elve_list = []
+    for elve in list_from_string:
+        elve.rstrip(",")
+        elv_calories = elve.split(",")
+        elve_list.append(elv_calories)
+    return elve_list
 
 
 if __name__ == "__main__":
