@@ -21,7 +21,6 @@ def elves_list_maker(file):
             else:
                 raw_elves_list.append("---")
     converting_string = ""
-    
     for calorie in raw_elves_list:
         if calorie != "---":
            converting_string = converting_string + calorie + ","
@@ -34,7 +33,6 @@ def elves_list_maker(file):
         elv_calories = elve.split(",")
         elve_list.append(elv_calories)
     return elve_list
-
 
 if __name__ == "__main__":
     main()
