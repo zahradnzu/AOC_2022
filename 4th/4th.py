@@ -27,18 +27,11 @@ def list_returner(l):
 def main():
     tuple_list = opener("4th_input.txt")
     pair_list = list_returner(tuple_list)
-    duplicate_counter = 0
+    counter = 0
     for pair in pair_list:
-        e1, e2 = pair
-        for i in e1:
-            ...
-
-    print(duplicate_counter)
-        
-
-
-
-
+        if set(pair[0]).issubset(pair[1]) or set(pair[1]).issubset(pair[0]):
+            counter += 1
+    print(counter)
 
 if __name__ == "__main__":
     main()
