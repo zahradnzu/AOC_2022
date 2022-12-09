@@ -1,5 +1,5 @@
 def main():
-    elve_list = elves_list_maker("1st.txt")
+    elve_list = elves_list_maker("1st_input.txt")
     new_elve_list = []
     for elve in elve_list:
         calorie_count = 0
@@ -9,7 +9,14 @@ def main():
             except (ValueError, TypeError):
                 new_elve_list.append(calorie_count)
                 break
+    
     print(max(new_elve_list))
+    
+    # part two
+    top_three = 0
+    for elve in sorted(new_elve_list, reverse=True)[0:3]:
+        top_three += int(elve)
+    print(top_three)
 
 def elves_list_maker(file):
     raw_elves_list = []
